@@ -1,0 +1,20 @@
+{
+  "id": "fftw",
+  "kind": "Pod",
+  "apiVersion": "v1beta1",
+  "desiredState": {
+    "manifest": {
+      "version": "v1beta1",
+        "id": "fftw",
+        "containers": [{
+          "name": "fftw",
+          "image": "nexus49/food-for-the-week:latest",
+          "ports": [{
+            "containerPort": 8000,
+            "hostPort": 8000
+          }]
+        }]
+    }
+  }
+}
+

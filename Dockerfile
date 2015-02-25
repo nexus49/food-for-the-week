@@ -8,7 +8,7 @@ RUN npm install -g bower
 RUN npm install -g grunt-cli
 
 # Install app dependencies
-RUN npm install
+RUN npm install --unsafe-perm
 
 EXPOSE 8000
 
