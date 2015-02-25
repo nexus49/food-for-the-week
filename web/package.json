@@ -21,7 +21,7 @@
     "tmp": "0.0.24"
   },
   "scripts": {
-    "postinstall": "bower install",
+    "postinstall": "bower install --allow-root",
     "prestart": "npm install",
     "start": "http-server -a 0.0.0.0 -p 8000",
     "pretest": "npm install",
