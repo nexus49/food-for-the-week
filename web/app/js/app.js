@@ -4,6 +4,7 @@
 
 var fftwApp = angular.module('fftwApp', [
   'ngRoute',
+  'textAngular',
   'fftwControllers',
   'fftwServices'
 ]);
@@ -16,6 +17,10 @@ fftwApp.config(['$routeProvider',
       when('/recipes', {
         templateUrl: 'partials/recipes-list.html',
         controller: 'RecipesListCtrl'
+      }).
+      when('/recipes/add', {
+        templateUrl: 'partials/recipes-add.html',
+        controller: 'RecipeAddController'
       }).
       when('/dashboard', {
         templateUrl: 'partials/dashboard.html',

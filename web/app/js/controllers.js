@@ -14,3 +14,12 @@ fftwControllers.controller('RecipesListCtrl',function ($scope) {
 })
 
 fftwControllers.controller('DashboardController',function ($scope) {});
+
+fftwControllers.controller('RecipeAddController', ['$scope', function($scope) {
+
+     console.log("!!!")
+     $scope.update = function(recipe) {
+       console.log(recipe)
+     };
+
+   }]);

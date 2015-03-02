@@ -12,6 +12,7 @@
     "bootstrap": "~3.3.2",
     "angular-route": "1.3.x",
     "angular-resource": "1.3.x",
-    "angular-animate": "1.3.x"
+    "angular-animate": "1.3.x",
+    "textAngular" : "1.3.x"
   }
 }
