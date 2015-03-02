@@ -12,3 +12,5 @@ fftwControllers.controller('RecipesListCtrl',function ($scope) {
   $scope.orderProp = 'rating';
 
 })
+
+fftwControllers.controller('DashboardController',function ($scope) {});
