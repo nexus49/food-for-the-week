@@ -31,7 +31,7 @@ describe('Recipe Model Unit Tests:', function() {
 			recipeWithUrl = new Recipe({
 				name: 'Recipe Name',
 				user: user,
-				url : "http://someurl.com"
+				url : 'http://someurl.com'
 			});
 
 			recipeWithoutUrl = new Recipe({
