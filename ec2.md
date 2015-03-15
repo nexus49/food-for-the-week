@@ -11,13 +11,13 @@ aws ec2 associate-address --instance-id i-6783d648 --public-ip 52.1.100.229 --pr
 
 ## Start mongo
 '''
-sudo docker run --name mongo -d mongo
+sudo docker run --name mongo -d -v /home/ec2-user/data:/data/db mongo
 '''
 
 ## Start the fftw
 
 '''
-sudo docker run --name fftw --link mongo:mongo -d -e MONGOHQ_URL=mongodb://mongo/mean-dev -e NODE_ENV=production -p 3000:3000 nexus49/food-for-the-week:latest
+sudo docker run --name fftw --link mongo:mongo -d -p 3000:3000 nexus49/food-for-the-week:latest
 '''
 
 ## Update frontend
