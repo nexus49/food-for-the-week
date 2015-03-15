@@ -11,7 +11,7 @@ var should = require('should'),
 /**
  * Globals
  */
-var user, recipe;
+var user, recipeWithUrl, recipeWithoutUrl;
 
 /**
  * Unit tests
@@ -27,8 +27,14 @@ describe('Recipe Model Unit Tests:', function() {
 			password: 'password'
 		});
 
-		user.save(function() { 
-			recipe = new Recipe({
+		user.save(function() {
+			recipeWithUrl = new Recipe({
+				name: 'Recipe Name',
+				user: user,
+				url : 'http://someurl.com'
+			});
+
+			recipeWithoutUrl = new Recipe({
 				name: 'Recipe Name',
 				user: user
 			});
@@ -38,24 +44,31 @@ describe('Recipe Model Unit Tests:', function() {
 	});
 
 	describe('Method Save', function() {
-		it('should be able to save without problems', function(done) {
-			return recipe.save(function(err) {
+		it('should be able to save a recipe with URL without problems', function(done) {
+			return recipeWithUrl.save(function(err) {
 				should.not.exist(err);
 				done();
 			});
 		});
 
-		it('should be able to show an error when try to save without name', function(done) { 
-			recipe.name = '';
+		it('should be able to save a recipe without URL without problems', function(done) {
+			return recipeWithoutUrl.save(function(err) {
+				should.not.exist(err);
+				done();
+			});
+		});
 
-			return recipe.save(function(err) {
+		it('should be able to show an error when try to save without name', function(done) {
+			recipeWithUrl.name = '';
+
+			return recipeWithUrl.save(function(err) {
 				should.exist(err);
 				done();
 			});
 		});
 	});
 
-	afterEach(function(done) { 
+	afterEach(function(done) {
 		Recipe.remove().exec();
 		User.remove().exec();
 

@@ -59,7 +59,8 @@ module.exports = {
 			]
 		},
 		css: [
-			'public/modules/*/css/*.css'
+			'public/modules/*/css/*.css',
+			'public/modules/*/css/plugins/*.css'
 		],
 		js: [
 			'public/config.js',

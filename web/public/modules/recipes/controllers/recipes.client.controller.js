@@ -9,7 +9,8 @@ angular.module('recipes').controller('RecipesController', ['$scope', '$statePara
 		$scope.create = function() {
 			// Create new Recipe object
 			var recipe = new Recipes ({
-				name: this.name
+				name: this.name,
+				url: this.url
 			});
 
 			// Redirect after save
@@ -18,6 +19,7 @@ angular.module('recipes').controller('RecipesController', ['$scope', '$statePara
 
 				// Clear form fields
 				$scope.name = '';
+				$scope.url = '';
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
@@ -25,7 +27,7 @@ angular.module('recipes').controller('RecipesController', ['$scope', '$statePara
 
 		// Remove existing Recipe
 		$scope.remove = function(recipe) {
-			if ( recipe ) { 
+			if ( recipe ) {
 				recipe.$remove();
 
 				for (var i in $scope.recipes) {
@@ -58,7 +60,7 @@ angular.module('recipes').controller('RecipesController', ['$scope', '$statePara
 
 		// Find existing Recipe
 		$scope.findOne = function() {
-			$scope.recipe = Recipes.get({ 
+			$scope.recipe = Recipes.get({
 				recipeId: $stateParams.recipeId
 			});
 		};
