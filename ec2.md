@@ -15,5 +15,9 @@ sudo docker run --name mongo -d mongo
 sudo docker run --name fftw --link mongo:mongo -d -e MONGOHQ_URL=mongodb://mongo/mean-dev -e NODE_ENV=production -p 3000:3000 nexus49/food-for-the-week:latest
 '''
 
+## Update frontend
 
+'''
+sudo docker pull nexus49/food-for-the-week:latest && sudo docker stop fftw && sudo docker rm fftw && sudo docker run --name fftw --link mongo:mongo -d -e MONGOHQ_URL=mongodb://mongo/mean-dev -e NODE_ENV=production -p 3000:3000 nexus49/food-for-the-week:latest
+'''
 

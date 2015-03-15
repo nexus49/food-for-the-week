@@ -11,7 +11,7 @@ module.exports = function(grunt) {
 		mochaTests: ['app/tests/**/*.js']
 	};
 
-	var csslintCSS = ['public/modules/**/*.css', '!public/modules/**/plugins/*.css'];
+	var csslintCSS = ['public/modules/**/*.css', '!public/modules/**/plugins/*.css', '!public/modules/core/css/core.css', '!public/modules/font-awesome/css/font-awesome.css', '!public/modules/core/css/morris.css'];
 
 	// Project Configuration
 	grunt.initConfig({
