@@ -11,6 +11,8 @@ module.exports = function(grunt) {
 		mochaTests: ['app/tests/**/*.js']
 	};
 
+	var csslintCSS = ['public/modules/**/*.css', '!public/modules/**/plugins/*.css'];
+
 	// Project Configuration
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
@@ -66,7 +68,7 @@ module.exports = function(grunt) {
 				csslintrc: '.csslintrc'
 			},
 			all: {
-				src: watchFiles.clientCSS
+				src: csslintCSS
 			}
 		},
 		uglify: {

@@ -1,0 +1,3 @@
+app/js/plugins/**/*.js
+public/modules/core/js/plugins/**/*.js
+public/modules/core/js/plugins/*.js
