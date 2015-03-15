@@ -1,15 +1,20 @@
 FROM nodesource/node:wheezy 
 
-COPY . /src
-
-WORKDIR src/web
-
 RUN npm install -g bower
 RUN npm install -g grunt-cli
 
+# Create a nonroot user, and switch to it
+RUN /usr/sbin/useradd --create-home --home-dir /usr/local/nonroot --shell /bin/bash nonroot 
+
+COPY . /src
+RUN chown -R nonroot /src
+USER nonroot
+
+WORKDIR src/web
+
 # Install app dependencies
-RUN npm install --unsafe-perm
+RUN npm install 
 
-EXPOSE 8000
+EXPOSE 3000
 
-CMD npm start >> log.txt 
+CMD grunt >> log.txt 
