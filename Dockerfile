@@ -11,7 +11,7 @@ RUN chown -R nonroot /src
 USER nonroot
 
 ENV MONGOHQ_URL mongodb://mongo/mean-dev 
-NODE_ENV production
+ENV NODE_ENV production
 
 WORKDIR src/web
 
