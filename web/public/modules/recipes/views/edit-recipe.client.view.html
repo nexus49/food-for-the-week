@@ -2,7 +2,7 @@
     <div class="page-header">
         <h1>Edit Recipe</h1>
     </div>
-    <div class="col-md-12">
+    <div class="col-md-12 col-md-offset-0">
         <form class="form-horizontal" data-ng-submit="update()" novalidate>
             <fieldset>
                 <div class="form-group">
@@ -10,6 +10,27 @@
                     <div class="controls">
                         <input type="text" data-ng-model="recipe.name" id="name" class="form-control" placeholder="Name" required>
                     </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label">Ingredients</label>
+                  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                    <i class="glyphicons glyphicon-plus"></i>
+                  </button>
+
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>Quantity</th>
+                        <th>Name</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr data-ng-repeat="ingredient in recipe.ingredients">
+                        <td>{{ingredient.quantity}} {{ingredient.unit}}</td>
+                        <td>{{ingredient.name}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
                 <div class="form-group">
                     <input type="submit" value="Update" class="btn btn-default">
@@ -20,4 +41,40 @@
             </fieldset>
         </form>
     </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form class="form-horizontal" data-ng-submit="insertIngredient()" novalidate>
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Add Ingredient</h4>
+          </div>
+          <div class="modal-body">
+              <fieldset>
+                  <label class="control-label" for="ingredientName">Name</label>
+                  <div class="controls">
+                      <input type="text" data-ng-model="ingredientName" id="ingredientName" class="form-control" placeholder="Name" required>
+                </div>
+                <label class="control-label" for="ingredientQuantity">Quantity</label>
+                <div class="controls">
+                    <input type="text" data-ng-model="ingredientQuantity" id="ingredientQuantity" class="form-control" placeholder="Quantity" required>
+              </div>
+              <label class="control-label" for="ingredientUnit">Unit</label>
+              <div class="controls">
+                  <input type="text" data-ng-model="ingredientUnit" id="ingredientUnit" class="form-control" placeholder="gr kg oz lbs cups tbs ts ml liter lug knob pcs" required>
+            </div>
+              </fieldset>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <input type="submit" class="btn btn-primary" value="Save changes"></input>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- Modal -->
 </section>

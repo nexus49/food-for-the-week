@@ -11,7 +11,7 @@ var should = require('should'),
 /**
  * Globals
  */
-var user, recipeWithUrl, recipeWithoutUrl;
+var user, recipeWithUrl, recipeWithoutUrl, recipeWithIngredients;
 
 /**
  * Unit tests
@@ -39,6 +39,15 @@ describe('Recipe Model Unit Tests:', function() {
 				user: user
 			});
 
+			recipeWithIngredients = new Recipe({
+				name: 'Recipe Name',
+				user: user,
+				url : 'http://someurl.com',
+				ingredients : [
+					{name: 'Salt', quantity: 1, unit: 'pcs', user: user}
+				]
+			});
+
 			done();
 		});
 	});
@@ -53,6 +62,13 @@ describe('Recipe Model Unit Tests:', function() {
 
 		it('should be able to save a recipe without URL without problems', function(done) {
 			return recipeWithoutUrl.save(function(err) {
+				should.not.exist(err);
+				done();
+			});
+		});
+
+		it('should be able to save a recipe with Ingredients without problems', function(done) {
+			return recipeWithIngredients.save(function(err) {
 				should.not.exist(err);
 				done();
 			});

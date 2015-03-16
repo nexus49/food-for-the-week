@@ -53,6 +53,30 @@ angular.module('recipes').controller('RecipesController', ['$scope', '$statePara
 			});
 		};
 
+		// Update existing Recipe
+		$scope.insertIngredient = function() {
+			var recipe = $scope.recipe;
+
+			console.log('Updating ' + this.ingredientName);
+			console.log('Updating ' + this.ingredientQuantity);
+			console.log('Updating ' + this.ingredientUnit);
+
+
+			recipe.ingredients.push({
+				name: this.ingredientName,
+				quantity: this.ingredientQuantity,
+				unit: this.ingredientUnit
+			});
+
+			console.log('Updating' + JSON.stringify(recipe));
+
+			recipe.$update(function() {
+				$location.path('recipes/' + recipe._id);
+			}, function(errorResponse) {
+				$scope.error = errorResponse.data.message;
+			});
+		};
+
 		// Find a list of Recipes
 		$scope.find = function() {
 			$scope.recipes = Recipes.query();
