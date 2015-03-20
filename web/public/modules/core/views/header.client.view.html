@@ -12,7 +12,7 @@
   <!-- Top Menu Items -->
   <ul class="nav navbar-right top-nav">
       <li class="dropdown" data-ng-if="authentication.user">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Bastian <b class="caret"></b></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {{authentication.user.firstName}} <b class="caret"></b></a>
           <ul class="dropdown-menu">
               <li>
                   <a href="/#!/settings/profile"><i class="fa fa-fw fa-user"></i> Profile</a>
