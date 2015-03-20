@@ -6,13 +6,12 @@ angular.module('recipes').controller('RecipesController', ['$scope', '$statePara
 		$scope.authentication = Authentication;
 
 		$('#ingredientsModal').on('shown.bs.modal', function (e) {
-			console.log('focus')
-			$('#ingredientName').focus()
-		})
+			$('#ingredientName').focus();
+		});
 
 		$(document).keypress(function(e) {
-  		if(e.charCode == 110) {
-				$('#ingredientsModal').modal('show')
+  		if(e.charCode === 110) {
+				$('#ingredientsModal').modal('show');
   		}
 		});
 
@@ -84,10 +83,10 @@ angular.module('recipes').controller('RecipesController', ['$scope', '$statePara
 
 			recipe.$update(function() {
 				$location.path('recipes/' + recipe._id+ '/edit');
-				$('#ingredientsModal').modal('hide')
-				$('#ingredientName').val("")
-				$('#ingredientQuantity').val("")
-				$('#ingredientUnit').val("")
+				$('#ingredientsModal').modal('hide');
+				$('#ingredientName').val('');
+				$('#ingredientQuantity').val('');
+				$('#ingredientUnit').val('');
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 				var index = recipe.ingredients.indexOf(newIngredient);
