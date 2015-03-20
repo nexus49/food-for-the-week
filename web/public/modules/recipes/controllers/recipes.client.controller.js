@@ -5,6 +5,17 @@ angular.module('recipes').controller('RecipesController', ['$scope', '$statePara
 	function($scope, $stateParams, $location, Authentication, Recipes) {
 		$scope.authentication = Authentication;
 
+		$('#ingredientsModal').on('shown.bs.modal', function (e) {
+			console.log('focus')
+			$('#ingredientName').focus()
+		})
+
+		$(document).keypress(function(e) {
+  		if(e.charCode == 110) {
+				$('#ingredientsModal').modal('show')
+  		}
+		});
+
 		// Create new Recipe
 		$scope.create = function() {
 			// Create new Recipe object
@@ -62,18 +73,27 @@ angular.module('recipes').controller('RecipesController', ['$scope', '$statePara
 			console.log('Updating ' + this.ingredientUnit);
 
 
-			recipe.ingredients.push({
+			var newIngredient = {
 				name: this.ingredientName,
 				quantity: this.ingredientQuantity,
 				unit: this.ingredientUnit
-			});
+			};
+			recipe.ingredients.push(newIngredient);
 
 			console.log('Updating' + JSON.stringify(recipe));
 
 			recipe.$update(function() {
-				$location.path('recipes/' + recipe._id);
+				$location.path('recipes/' + recipe._id+ '/edit');
+				$('#ingredientsModal').modal('hide')
+				$('#ingredientName').val("")
+				$('#ingredientQuantity').val("")
+				$('#ingredientUnit').val("")
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
+				var index = recipe.ingredients.indexOf(newIngredient);
+				if (index > -1) {
+					recipe.ingredients.splice(index, 1);
+				}
 			});
 		};
 
@@ -89,4 +109,5 @@ angular.module('recipes').controller('RecipesController', ['$scope', '$statePara
 			});
 		};
 	}
+
 ]);
