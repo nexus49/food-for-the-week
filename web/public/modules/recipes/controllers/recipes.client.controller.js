@@ -17,13 +17,13 @@ angular.module('recipes').controller('RecipesController', ['$scope', '$statePara
 
 		$http.get('/config/categories').
 		success(function(data, status, headers, config) {
-    	$scope.categories  = data
-  	})
+    	$scope.categories  = data;
+  	});
 
 		$http.get('/config/units').
 		success(function(data, status, headers, config) {
-    	$scope.units = data
-  	})
+    	$scope.units = data;
+  	});
 
 		// Create new Recipe
 		$scope.create = function() {

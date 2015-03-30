@@ -4,7 +4,7 @@ module.exports = {
 	app: {
 		title: 'Food for the Week',
 		description: 'Your weekly grocery planner',
-		keywords: 'mongodb, express, angularjs, node.js, mongoose, passport'
+		keywords: 'food, food-planning, recipes'
 	},
 	port: process.env.PORT || 3000,
 	templateEngine: 'swig',
