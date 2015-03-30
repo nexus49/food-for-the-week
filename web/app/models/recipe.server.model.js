@@ -11,6 +11,9 @@ var mongoose = require('mongoose'),
 	 * Ingredients Schema
 	 */
 var units = 'gr kg oz lbs cups tbs ts ml liter lug knob pcs'.split(' ');
+var categories = 'bulk vegetables meat fruit diary canned other'.split(' ');
+global.categories = categories;
+global.units = units;
 var IngredientsSchema = new Schema({
 		name: {
 		type: String,
@@ -26,6 +29,12 @@ var IngredientsSchema = new Schema({
 		type: String,
 		enum: units,
 		required: 'Please select a Unit.',
+		trim: true
+	},
+	category: {
+		type: String,
+		enum: categories,
+		required: 'Please fill a Category.',
 		trim: true
 	},
 	created: {
