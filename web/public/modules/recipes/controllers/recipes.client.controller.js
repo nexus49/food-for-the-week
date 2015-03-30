@@ -1,8 +1,8 @@
 'use strict';
 
 // Recipes controller
-angular.module('recipes').controller('RecipesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Recipes',
-	function($scope, $stateParams, $location, Authentication, Recipes) {
+angular.module('recipes').controller('RecipesController', ['$scope', '$stateParams', '$location','$http', 'Authentication', 'Recipes',
+	function($scope, $stateParams, $location, $http, Authentication, Recipes) {
 		$scope.authentication = Authentication;
 
 		$('#ingredientsModal').on('shown.bs.modal', function (e) {
@@ -14,6 +14,16 @@ angular.module('recipes').controller('RecipesController', ['$scope', '$statePara
 				$('#ingredientsModal').modal('show');
   		}
 		});
+
+		$http.get('/config/categories').
+		success(function(data, status, headers, config) {
+    	$scope.categories  = data
+  	})
+
+		$http.get('/config/units').
+		success(function(data, status, headers, config) {
+    	$scope.units = data
+  	})
 
 		// Create new Recipe
 		$scope.create = function() {
@@ -99,6 +109,7 @@ angular.module('recipes').controller('RecipesController', ['$scope', '$statePara
 		// Find a list of Recipes
 		$scope.find = function() {
 			$scope.recipes = Recipes.query();
+
 		};
 
 		// Find existing Recipe

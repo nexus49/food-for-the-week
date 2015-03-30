@@ -68,24 +68,17 @@
               <label class="control-label" for="ingredientUnit">Unit</label>
               <div class="controls">
                 <select class="col-xs-1 form-control" data-ng-model="ingredientUnit">
-                  <option>cups</option>
-                  <option>gr</option>
-                  <option>kg</option>
-                  <option>knob</option>
-                  <option>lbs</option>
-                  <option>liter</option>
-                  <option>lug</option>
-                  <option>ml</option>
-                  <option>oz</option>
-                  <option>pcs</option>
-                  <option>tbs</option>
-                  <option>ts</option>
+                  <option data-ng-repeat="unit in units">{{unit}}</option>
                 </select>
               </div>
-
-              <!--
-                <input type="text" data-ng-model="ingredientUnit" id="ingredientUnit" class="form-control" placeholder="gr kg oz lbs cups tbs ts ml liter lug knob pcs" required>
-               -->
+            </div>
+            <div class="form-group">
+              <label class="control-label" for="ingredientCategory">Category</label>
+              <div class="controls">
+                <select class="col-xs-1 form-control" data-ng-model="ingredientCategory">
+                  <option data-ng-repeat="category in categories">{{category}}</option>
+                </select>
+              </div>
             </div>
           </div>
           <div class="modal-footer">
